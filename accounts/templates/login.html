@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block page_title %}LOGIN PAGE{% endblock %}
+
+{% block page_heading%}USER LOGIN{% endblock %}
+
+{% block content%}
+<form method="POST">
+    {% csrf_token %}
+    {{ login_form }}
+    <button type="submit">Login</button>
+</form>   
+{% endblock %}        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
