@@ -46,21 +46,30 @@ class UserRegistrationForm(UserCreationForm):
             
         return password2
             
+
+# Password Reset Confirm form
+
+class UserPasswordResetForm(forms.Form):
+    
+    new_password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput)
+    new_password2 = forms.CharField(
+        label="New password confirmation",
+        widget=forms.PasswordInput)
+
+    class Meta: 
+        model = User
+        fields = ['new_password1', 'new_password2']
         
+    def clean_password(self):
+        new_password1 = self.cleaned_data.get('new_password1')
+        new_password2 = self.cleaned_data.get('new_password2')
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        if not new_password1 or not new_password2:
+            raise ValidationError("Please confirm your password")
+    
+        if new_password1 != new_password2:
+            raise ValidationError("Passwords must match")
+            
+        return new_password2

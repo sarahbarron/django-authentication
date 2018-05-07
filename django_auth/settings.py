@@ -129,6 +129,9 @@ STATICFILES_DIRS = [
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
+#email backend only needed to view info in the console
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
